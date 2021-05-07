@@ -1,4 +1,4 @@
-import logging
+9import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -44,6 +44,17 @@ def send_start(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.START_TEXT.format(update.from_user.first_name),
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("-------", url=""),
+                    InlineKeyboardButton("-------", url=""),
+                ],
+     """           [
+                    InlineKeyboardButton("NexonHex Projects ❤", url="Https://telegram.me/NexonHex")
+                ], """ # Use If Needed 
+            ]
+        ),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -57,6 +68,17 @@ def upgrade(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.UPGRADE_TEXT,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("--------", url=""),
+                    InlineKeyboardButton("--------", url=""),
+                ],
+       """         [
+                    InlineKeyboardButton("----------", url="")
+                ], """ # Use If Needed
+            ]
+        ),
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True
@@ -75,8 +97,17 @@ async def rename_cb(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 😇".format(filename),
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 RENAME 📝", callback_data="rename_button")],
-                                                [InlineKeyboardButton(text="✖️ CANCEL ✖️", callback_data="cancel_e")]]),
+        reply_markup=InlineKeyboardMarkup(
+                                          [
+                                           [
+                                            InlineKeyboardButton(text="RENAME", callback_data="rename_button"),
+                                            InlineKeyboardButton(text="CANCEL", callback_data="cancel_e"),
+                                           ],
+                                  """         [
+                                            InlineKeyboardButton(text="Support Group", url="https://telegram.me/Nexonhex_Grp"),
+                                           ], """ # Use If Needed 
+                                          ]
+                                         ),
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True   
